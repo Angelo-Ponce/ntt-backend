@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.ntt.dto.ClienteDto;
 import com.ntt.dto.CuentaDto;
 import com.ntt.exception.ModelNotFoundException;
-import com.ntt.model.Cliente;
 import com.ntt.model.Cuenta;
 import com.ntt.service.ICuentaService;
 
@@ -60,7 +58,7 @@ public class CuentaController {
 		System.out.println("Datos:" + dtoRequest.getCliente().getIdPersona());
 		Cuenta obj = ctService.registrar(cuenta);
 		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cuenta.getNumeroCuenta()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getNumeroCuenta()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 }
